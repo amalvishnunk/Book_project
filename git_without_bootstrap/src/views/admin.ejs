@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin home</title>
+
+    <!-- code to prevent user from using back button -->
+
+<!-- <script type="text/javascript" >
+    function preventBack(){window.history.forward();}
+     setTimeout("preventBack()", 0);
+     window.onunload=function(){null};
+ </script> -->
+ <script>
+ history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+        history.go(1);
+    };
+ </script>
+
+<!-- end of code -->
+
+
+
+
+
+</head>
+<body>
+    <h1>Admin home</h1>
+    <form action="/">
+        <input type='button'value='Log Out'onclick="window.location.href='/'" />
+    </form>
+    <%if(res_2.length==0){%>
+<h3>No pending items</h3>
+    <%}%>
+    <%for(var i=0;i<res_2.length;i++){%>
+            <%=res_2[i].title%>
+            <%=res_2[i].desc%>
+            <form>
+                    <input type='button'value='approve'onclick="window.location.href='/check/approve/<%=res_2[i]._id%>'" />
+            </form>
+
+            <form>
+                    <input type='button'value='remove'onclick="window.location.href='/check/remove/<%=res_2[i]._id%>'" />
+            </form>
+
+
+
+
+            <br>
+        <%}%>
+    
+   
+
+
+</body>
+</html>

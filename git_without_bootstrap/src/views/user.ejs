@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>user home</title>
+    <!-- code to prevent user from using back button -->
+
+<!-- <script type="text/javascript" >
+    function preventBack(){window.history.forward();}
+     setTimeout("preventBack()", 0);
+     window.onunload=function(){null};
+ </script> -->
+ <script>
+    history.pushState(null, null, location.href);
+       window.onpopstate = function () {
+           history.go(1);
+       };
+    </script>
+<!-- end of code -->
+</head>
+<body>
+    
+    <h3>welcome <%=res_1.name%></h3>
+    <form>
+        <input type='button'value='Add Books'onclick="window.location.href='/check/addbook'" />
+    </form>
+
+    <form>
+            <input type='button'value='My Books'onclick="window.location.href='/check/mybooks'" />
+    </form>
+    <form>
+            <input type='button'value='Borrowed Books'onclick="window.location.href='/check/borrowedbooks'" />
+    </form>
+
+    <form action="/">
+        <input type='button'value='Log Out'onclick="window.location.href='/'" />
+    </form>
+
+
+
+    <h3>Books available</h3>
+    <%if(books.length==0){%>
+        <h4>No Books are currenty available</h4>
+    <%}%>
+
+    <%for(var i=0;i<books.length;i++){%>
+        <%=books[i].title%>
+        <%=books[i].desc%>
+        <form>
+            <input type='button'value='borrow'onclick="window.location.href='/check/borrow/<%=books[i]._id%>'" />
+        </form>
+
+
+
+        <br>
+    <%}%>
+
+</body>
+</html>
