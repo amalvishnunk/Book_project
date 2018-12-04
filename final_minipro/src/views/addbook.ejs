@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>signup</title>
+</head>
+<body>
+    
+    <form action="/check/addbookdata" method="post">
+        <div class="container">
+          <h1>Add book </h1>
+          <hr>
+            
+
+          <label for="title"><b>Title</b></label>
+          <input type="text" placeholder="Enter Title" name="title" required>
+
+          <label for="desc"><b>Description</b></label>
+          <input type="text" placeholder="Enter descrption" name="desc" required>
+          
+          <!-- hidden inputs -->
+          <input type="hidden" value="free" name="status" />
+          <input type="hidden" value="pending" name="app_status" />
+          <input type="hidden" value="<%=res_1._id%>" name="owner_id" />
+          <!-- end of hidden inputs -->
+      
+           <div class="clearfix">
+            <button type="button" class="cancelbtn">Cancel</button>
+            <button type="submit" class="signupbtn">Submitt</button>
+          </div>
+        </div>
+      </form>
+
+    </form>
+
+    <form>
+      <input type='button'value='back'onclick="window.location.href='/check/back'" />
+  </form>
+   
+
+
+
+
+  
+
+
+
+</body>
+</html>
